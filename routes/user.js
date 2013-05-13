@@ -4,5 +4,9 @@
  */
 
 exports.list = function(req, res){
-  res.send("respond with a resource");
+   db.collection('profile', function(err, collection) {
+        collection.find().toArray(function(err, items) {
+			res.render('users', { title: 'Users', users: items});
+        });
+    });
 };
